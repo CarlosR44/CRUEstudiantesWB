@@ -1,0 +1,8 @@
+com\carlos\crudestudiantesws\dao\MatriculaDAO.class
+com\carlos\crudestudiantesws\model\Conexion.class
+com\carlos\crudestudiantesws\model\Materia.class
+com\carlos\crudestudiantesws\resources\JakartaEE10Resource.class
+com\carlos\crudestudiantesws\model\Estudiante.class
+com\carlos\crudestudiantesws\JakartaRestConfiguration.class
+com\carlos\crudestudiantesws\dao\EstudianteDAO.class
+com\carlos\crudestudiantesws\ws\ServicioMatriculas.class

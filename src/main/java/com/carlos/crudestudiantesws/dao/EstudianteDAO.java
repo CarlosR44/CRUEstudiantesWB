@@ -49,5 +49,33 @@ public class EstudianteDAO {
         }
         return lista;
     }
+    
+    public Estudiante obtenerPorId(int id) {
+    Estudiante est = null;
+
+    try {
+        cn = Conexion.getConnection();
+        String sql = "SELECT * FROM estudiantes WHERE id = ?";
+        ps = cn.prepareStatement(sql);
+        ps.setInt(1, id);
+
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            est = new Estudiante();
+            est.setId(rs.getInt("id"));
+            est.setNombre(rs.getString("nombre"));
+            est.setApellido(rs.getString("apellido"));
+            est.setPais_codigo(rs.getString("pais_codigo"));
+            est.setCorreo(rs.getString("correo"));
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return est;
+}
+
 
 }

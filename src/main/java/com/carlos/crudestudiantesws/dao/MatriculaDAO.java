@@ -60,4 +60,29 @@ public class MatriculaDAO {
         return lista;
     }
 
+    public Materia obtenerMateriaPorId(int id) {
+        Materia mat = null;
+
+        try {
+            cn = Conexion.getConnection();
+            String sql = "SELECT * FROM materia WHERE id =? ";
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                mat = new Materia();
+                mat.setId(rs.getInt("id"));
+                mat.setCodigo(rs.getString("codigo"));
+                mat.setNombre(rs.getString("nombre"));
+                mat.setDescripcion(rs.getString("descripcion"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return mat;
+    }
+
 }

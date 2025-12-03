@@ -25,8 +25,9 @@ public class ServicioMatriculas {
     private final MatriculaDAO matDao = new MatriculaDAO();
     private final EstudianteDAO estDao = new EstudianteDAO();
 //
+
     @WebMethod(operationName = "getEstudiantePorMateria")
-    public List<Estudiante> getEstudiantePorMateria(@WebParam(name="idMateria") int idMateria) {
+    public List<Estudiante> getEstudiantePorMateria(@WebParam(name = "idMateria") int idMateria) {
         System.out.println("Consultando estudiantes matriculados en la materia " + idMateria);
 
         List<Integer> ids = matDao.obtenerEstudiantesPorMateria(idMateria);
@@ -37,8 +38,9 @@ public class ServicioMatriculas {
 
         return estudiantes;
     }
-        @WebMethod(operationName = "getMateriasPorEstudiante")
-    public List<Materia> getMateriasPorEstudiante(@WebParam(name="idEstudiante") int idEstudiante) {
+
+    @WebMethod(operationName = "getMateriasPorEstudiante")
+    public List<Materia> getMateriasPorEstudiante(@WebParam(name = "idEstudiante") int idEstudiante) {
         System.out.println("Consultando materias matriculadas por el estudiante " + idEstudiante);
 
         List<Materia> materias = new MatriculaDAO().listarMatriculas(idEstudiante);
@@ -46,4 +48,17 @@ public class ServicioMatriculas {
 
         return materias;
     }
+
+    @WebMethod(operationName = "getEstudiante")
+    public Estudiante getEstudiante(@WebParam(name = "idEstudiante") int idEstudiante) {
+        System.out.println("Consultando estudiante con ID " + idEstudiante);
+        return estDao.obtenerPorId(idEstudiante);
+    }
+
+    @WebMethod(operationName = "getMateria")
+    public Materia getMateria(@WebParam(name = "idMateria") int idMateria) {
+        System.out.println("Consultando materia " + idMateria);
+        return new MatriculaDAO().obtenerMateriaPorId(idMateria);
+    }
+
 }
